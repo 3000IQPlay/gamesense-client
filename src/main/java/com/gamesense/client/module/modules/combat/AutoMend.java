@@ -2,8 +2,8 @@ package com.gamesense.client.module.modules.combat;
 
 import com.gamesense.api.setting.values.IntegerSetting;
 import com.gamesense.api.util.misc.MessageBus;
-import com.gamesense.client.module.Category;
 import com.gamesense.client.module.Module;
+import com.gamesense.client.module.Category;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
@@ -11,7 +11,6 @@ import net.minecraft.item.ItemExpBottle;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.util.EnumHand;
-
 import java.util.HashMap;
 import java.util.Map;
 

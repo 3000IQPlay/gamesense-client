@@ -5,10 +5,11 @@ import com.gamesense.api.util.player.social.SocialManager;
 import com.gamesense.client.module.Category;
 import com.gamesense.client.module.Module;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBow;
+import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketPlayer;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
@@ -37,7 +38,7 @@ public class BowAim extends Module {
                 Vec3d pos = interpolateEntity(player, mc.getRenderPartialTicks());
                 float[] angels = calcAngle(interpolateEntity(mc.player, mc.getRenderPartialTicks()), pos);
                 if(packet.getValue()) {
-                	mc.player.connection.sendPacket(new CPacketPlayer.Rotation(angels[0], angels[1], mc.player.onGround));
+                	mc.player.connection.sendPacket((Packet<?>) new CPacketPlayer.Rotation(angels[0], angels[1], mc.player.onGround));
                 } else {
                 	mc.player.rotationYaw = angels[0];
                 	mc.player.rotationPitch = angels[1];

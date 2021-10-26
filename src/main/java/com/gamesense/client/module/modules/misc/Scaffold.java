@@ -1,18 +1,18 @@
 package com.gamesense.client.module.modules.misc;
 
 import com.gamesense.api.setting.values.BooleanSetting;
-import com.gamesense.api.util.misc.Timer;
 import com.gamesense.api.util.player.InventoryUtil;
 import com.gamesense.api.util.player.PlacementUtil;
+import com.gamesense.api.util.misc.Timer;
 import com.gamesense.client.module.Category;
 import com.gamesense.client.module.Module;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.network.play.client.CPacketPlayer;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -74,13 +74,9 @@ public class Scaffold extends Module {
                     mc.player.motionX *= 0.3;
                     mc.player.motionZ *= 0.3;
                     mc.player.jump();
-                    if (timer.passedMs(1500L)) {
+                    if (timer.passedMs(1200L)) {
+			timer.reset();
                         mc.player.motionY = -0.28;
-                        timer.reset();
-                    } else {
-                        final float towerMotion = 0.41999998688f;
-                        mc.player.setVelocity(0, towerMotion, 0);
-                        timer.reset();
                     }
                 }
 

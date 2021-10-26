@@ -22,10 +22,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 
 import java.awt.*;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Module.Declaration(name = "CombatInfo", category = Category.HUD)
@@ -36,7 +34,7 @@ public class CombatInfo extends HUDModule {
     ColorSetting color1 = registerColor("On", new GSColor(0, 255, 0, 255));
     ColorSetting color2 = registerColor("Off", new GSColor(255, 0, 0, 255));
 
-    private final InfoList list = new InfoList();
+    private InfoList list = new InfoList();
     private static final BlockPos[] surroundOffset = new BlockPos[]{new BlockPos(0, 0, -1), new BlockPos(1, 0, 0), new BlockPos(0, 0, 1), new BlockPos(-1, 0, 0)};
     private static final String[] hoosiersModules = {"AutoCrystal", "KillAura", "Surround", "AutoTrap", "SelfTrap"};
     private static final String[] hoosiersNames = {"AC", "KA", "SU", "AT", "ST"};
@@ -120,11 +118,11 @@ public class CombatInfo extends HUDModule {
                 if (ModuleManager.isModuleEnabled(hoosiersModules[index])) return hoosiersNames[index] + ": ON";
                 else return hoosiersNames[index] + ": OFF";
             } else if (infoType.getValue().equals("Cyber")) {
-                if (index == 0) return "gamesense.cc";
+                if (index == 0) return "SpiderSense";
                 else if (index == 1) return "HTR";
                 else if (index == 2) return "PLR";
-                else if (index == 3) return "" + totems;
-                else if (index == 4) return "PING " + getPing();
+                else if (index == 3) return "Totems " + totems;
+                else if (index == 4) return "Ping " + getPing();
                 else return "LBY";
             } else {
                 return "";

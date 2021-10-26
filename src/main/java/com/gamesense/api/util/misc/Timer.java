@@ -3,7 +3,7 @@ package com.gamesense.api.util.misc;
 public class Timer {
 
     private long current;
-    private final long time = -1L;
+    private long time = -1L;
 
     public Timer() {
         this.current = System.currentTimeMillis();
@@ -42,16 +42,20 @@ public class Timer {
     public boolean passedS(double s) {
         return this.passedMs((long)s * 1000L);
     }
-    
+
     public boolean passedMs(long ms) {
         return this.passedNS(this.convertToNS(ms));
     }
-    
+
+    public boolean passedNS(long ns) {
+        return System.nanoTime() - this.time >= ns;
+    }
+
     public long convertToNS(long time) {
         return time * 1000000L;
     }
-    
-    public boolean passedNS(long ns) {
-        return System.nanoTime() - this.time >= ns;
+
+    public long getPassedTimeMs() {
+        return (System.nanoTime() - this.time) / 1000000L;
     }
 }
